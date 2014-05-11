@@ -1,8 +1,11 @@
 class CountriesController < ApplicationController
+  
+  before_filter :admin_user
+  
   # GET /countries
   # GET /countries.json
   def index
-    @countries = Country.all
+    @countries = Country.paginate(page: params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,4 +1,7 @@
 SampleApp::Application.routes.draw do
+  resources :teams
+
+
   resources :countries
 
 
