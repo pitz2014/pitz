@@ -1,0 +1,16 @@
+<% provide(:title, 'Stadiums') %>
+<h1>Stadiums</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <%= render @stadia %>
+</ul>
+
+<%= will_paginate %>
+
+<% if current_user.admin? %>
+
+	<%= link_to 'New Stadium', new_stadium_path %>
+	
+<% end %>

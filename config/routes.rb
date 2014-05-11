@@ -1,4 +1,9 @@
 SampleApp::Application.routes.draw do
+  resources :countries
+
+
+  resources :stadia
+
   resources :users do
     member do
       get :following, :followers

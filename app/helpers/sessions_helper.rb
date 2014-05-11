@@ -1,5 +1,13 @@
 module SessionsHelper
 
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
+  
+  def admin_user?
+    current_user.admin?
+  end
+
   def sign_in(user)
     cookies.permanent[:remember_token] = user.remember_token
     self.current_user = user
