@@ -53,8 +53,14 @@ ActiveRecord::Schema.define(:version => 20140511073339) do
     t.datetime "updated_at",  :null => false
   end
 
-# Could not dump table "teams" because of following StandardError
-#   Unknown type 'country' for column 'belongs_to'
+  create_table "teams", :force => true do |t|
+    t.integer  "appearances"
+    t.integer  "titles"
+    t.integer  "fifa_ranking"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "country_id"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

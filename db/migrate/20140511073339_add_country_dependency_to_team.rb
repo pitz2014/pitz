@@ -1,5 +1,5 @@
 class AddCountryDependencyToTeam < ActiveRecord::Migration
   def change
-    add_column :teams, :belongs_to, :country
+    add_column :teams, :country_id, :integer
   end
 end
