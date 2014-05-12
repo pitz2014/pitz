@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140511073339) do
+ActiveRecord::Schema.define(:version => 20140512062136) do
+
+  create_table "brackets", :force => true do |t|
+    t.string   "name"
+    t.boolean  "running"
+    t.boolean  "over"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "countries", :force => true do |t|
     t.string   "name"
@@ -19,6 +27,43 @@ ActiveRecord::Schema.define(:version => 20140511073339) do
     t.string   "logo_url"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "goals", :force => true do |t|
+    t.datetime "date_time"
+    t.integer  "player_id"
+    t.integer  "match_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "group_stats", :force => true do |t|
+    t.integer  "group_id"
+    t.integer  "matches_played"
+    t.integer  "wins"
+    t.integer  "draws"
+    t.integer  "loses"
+    t.integer  "goals_favor"
+    t.integer  "goals_against"
+    t.integer  "points"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "groups", :force => true do |t|
+    t.string   "name"
+    t.integer  "bracket_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "matches", :force => true do |t|
+    t.datetime "date"
+    t.integer  "stadium_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.boolean  "playing"
+    t.boolean  "played"
   end
 
   create_table "microposts", :force => true do |t|
@@ -29,6 +74,17 @@ ActiveRecord::Schema.define(:version => 20140511073339) do
   end
 
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
+
+  create_table "players", :force => true do |t|
+    t.integer  "team_id"
+    t.string   "name"
+    t.date     "birth_date"
+    t.integer  "appearances"
+    t.integer  "career_goals"
+    t.string   "avatar_url"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"
@@ -57,9 +113,12 @@ ActiveRecord::Schema.define(:version => 20140511073339) do
     t.integer  "appearances"
     t.integer  "titles"
     t.integer  "fifa_ranking"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.integer  "country_id"
+    t.integer  "group_stats_id"
+    t.string   "team_url"
+    t.integer  "match_id"
   end
 
   create_table "users", :force => true do |t|

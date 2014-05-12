@@ -2,6 +2,8 @@ class Stadium < ActiveRecord::Base
   
   attr_accessible :capacity, :city, :description, :image_url, :name, :owner_club, :status
   
+  has_many :matches
+  
   validates :capacity, :city, :description, :image_url, :name, :owner_club, :presence => true
   
   validates :capacity, :numericality => {:greather_than_or_equal_to => 1}

@@ -1,13 +1,13 @@
 <li>
   <%= link_to image_tag(stadium.image_url , alt: stadium.name, size: 50), stadium %>
   <ul class="span8">
-  	<li><%= link_to stadium.name, stadium %></li>
-    <li><%= stadium.city %></li>
-    <li><%= stadium.owner_club %></li>
-    <li><%= stadium.status %></li>
+  	<li><b>Name:</b> <%= link_to stadium.name, stadium %></li>
+    <li><b>City:</b> <%= stadium.city %></li>
+    <li><b>Owner Club:</b><%= stadium.owner_club %></li>
+    <% if !stadium.status %>
+    <li><b>Status:</b> Available</li>
+    <% else %>
+    <li><b>Status:</b> Occupied</li>
+    <% end %>
   </ul>
-  <% if current_user.admin? %>
-    | <%= link_to "delete", stadium, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-  <% end %>
 </li>      

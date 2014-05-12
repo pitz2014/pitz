@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @bracket.name %>
+</p>
+
+<p>
+  <b>Running:</b>
+  <%= @bracket.running %>
+</p>
+
+<p>
+  <b>Over:</b>
+  <%= @bracket.over %>
+</p>
+
+
+<%= link_to 'Edit', edit_bracket_path(@bracket) %> |
+<%= link_to 'Back', brackets_path %>

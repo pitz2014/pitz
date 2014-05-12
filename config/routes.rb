@@ -1,4 +1,22 @@
 SampleApp::Application.routes.draw do
+  resources :groups
+
+
+  resources :brackets
+
+
+  resources :matches
+
+
+  resources :group_stats
+
+
+  resources :goals
+
+
+  resources :players
+
+
   resources :teams
 
 

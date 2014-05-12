@@ -1,23 +1,45 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Appearances:</b>
-  <%= @team.appearances %>
-</p>
+<div class="row">
+  <aside class="span8">
+      <%= image_tag("team_spain.jpg" , alt: @team.titles, size: "630x420") %>
+  </aside>
+  <div class="span4">
+    <ul class="users">
+	  <li><b>Name: </b> <%= @country.name %></li>
+	  <li><b>Flag: </b> <%= image_tag(@country.flag_url , 
+	  									alt: @country.name, size: "50x100") %></li>
+	  <li><b>FIFA logo: </b> <%= image_tag(@country.logo_url , 
+	  									alt: @country.name, size: "50x50") %></li>
+	  <li><b>Appearances: </b> <%= @team.appearances %></li>
+	  <li><b>Titles: </b> <%= @team.titles %></li>
+	  <li><b>Ranking: </b> <%= @team.fifa_ranking %></li>
+	</ul>	
+  </div>
+</div>
 
-<p>
-  <b>Titles:</b>
-  <%= @team.titles %>
-</p>
+<div class="row">
+	<div class="span6">
+	    <% if @team.players.any? %>
+	      <h3>Players</h3>
+	      <ol class="users">
+	        <%= render @players %>
+	      </ol>
+	      <%= will_paginate @players %>
+	    <% end %> 
+    </div>
+    <div class="span6">
+		
+	</div>
+</div>
 
-<p>
-  <b>Fifa ranking:</b>
-  <%= @team.fifa_ranking %>
-</p>
 
-<p>
-	<%= render Country.find_by_id(@team.country_id) %>
-</p>
 
-<%= link_to 'Edit', edit_team_path(@team) %> |
+
+<% if current_user.admin? %>
+	<%= link_to "Delete", @team, method: :delete,
+                                data: { confirm: "You sure?" } %> |
+	<%= link_to 'Edit', edit_team_path(@team) %> |
+<% end %>
+
 <%= link_to 'Back', teams_path %>

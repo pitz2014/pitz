@@ -1,0 +1,37 @@
+<h1>Listing group_stats</h1>
+
+<table>
+  <tr>
+    <th>Group</th>
+    <th>Matches played</th>
+    <th>Wins</th>
+    <th>Draws</th>
+    <th>Loses</th>
+    <th>Goals favor</th>
+    <th>Goals against</th>
+    <th>Points</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @group_stats.each do |group_stat| %>
+  <tr>
+    <td><%= group_stat.group_id %></td>
+    <td><%= group_stat.matches_played %></td>
+    <td><%= group_stat.wins %></td>
+    <td><%= group_stat.draws %></td>
+    <td><%= group_stat.loses %></td>
+    <td><%= group_stat.goals_favor %></td>
+    <td><%= group_stat.goals_against %></td>
+    <td><%= group_stat.points %></td>
+    <td><%= link_to 'Show', group_stat %></td>
+    <td><%= link_to 'Edit', edit_group_stat_path(group_stat) %></td>
+    <td><%= link_to 'Destroy', group_stat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Group stat', new_group_stat_path %>

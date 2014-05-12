@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Group:</b>
+  <%= @group_stat.group_id %>
+</p>
+
+<p>
+  <b>Matches played:</b>
+  <%= @group_stat.matches_played %>
+</p>
+
+<p>
+  <b>Wins:</b>
+  <%= @group_stat.wins %>
+</p>
+
+<p>
+  <b>Draws:</b>
+  <%= @group_stat.draws %>
+</p>
+
+<p>
+  <b>Loses:</b>
+  <%= @group_stat.loses %>
+</p>
+
+<p>
+  <b>Goals favor:</b>
+  <%= @group_stat.goals_favor %>
+</p>
+
+<p>
+  <b>Goals against:</b>
+  <%= @group_stat.goals_against %>
+</p>
+
+<p>
+  <b>Points:</b>
+  <%= @group_stat.points %>
+</p>
+
+
+<%= link_to 'Edit', edit_group_stat_path(@group_stat) %> |
+<%= link_to 'Back', group_stats_path %>

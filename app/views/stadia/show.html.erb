@@ -1,39 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @stadium.name %>
-</p>
+<%= image_tag(@stadium.image_url , alt: @stadium.name)%> <!--, size: "500x500") %> -->
 
-<p>
-  <b>City:</b>
-  <%= @stadium.city %>
-</p>
-
-<p>
-  <b>Owner club:</b>
-  <%= @stadium.owner_club %>
-</p>
-
-<p>
-  <b>Capacity:</b>
-  <%= @stadium.capacity %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @stadium.description %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @stadium.status %>
-</p>
-
-<p> 
-	<%= image_tag(@stadium.image_url, alt: @stadium.name, size: 300)%>
-</p>
+<ul class="users">
+  <li><b>Name: </b> <%= @stadium.name %></li>
+  <li><b>City: </b> <%= @stadium.city %></li>
+  <li><b>Owner Club: </b> <%= @stadium.owner_club %></li>
+  <% if !@stadium.status %>
+  <li><b>Status:</b> Available</li>
+  <% else %>
+  <li><b>Status:</b> Occupied</li>
+  <% end %>
+  <li><b>Capacity: </b> <%= @stadium.capacity %></li>
+  <li> <%= @stadium.description %></li>
+</ul>
 
 
-<%= link_to 'Edit', edit_stadium_path(@stadium) %> |
+<% if current_user.admin? %>
+	<%= link_to "Delete", @stadium, method: :delete,
+                                data: { confirm: "You sure?" } %> |
+	<%= link_to 'Edit', edit_stadium_path(@stadium) %> |
+<% end %>
+
 <%= link_to 'Back', stadia_path %>

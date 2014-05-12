@@ -1,20 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @country.name %>
-</p>
-
-<p>
-  <b>Flag url:</b>
-  <%= @country.flag_url %>
-</p>
-
-<p>
-  <b>Logo url:</b>
-  <%= @country.logo_url %>
-</p>
+<ul class="users">
+  <li><b>Name: </b> <%= @country.name %></li>
+  <li><b>Flag: </b> <%= image_tag(@country.flag_url , alt: @country.name, size: "50x100") %></li>
+  <li><b>FIFA logo: </b> <%= image_tag(@country.logo_url , alt: @country.name, size: "50x50") %></li>
+  <li><b> <%= link_to "View Team", @country.team %> </b></li>
+</ul>
 
 
-<%= link_to 'Edit', edit_country_path(@country) %> |
+<% if current_user.admin? %>
+	<%= link_to "Delete", @country, method: :delete,
+                                data: { confirm: "You sure?" } %> |
+	<%= link_to 'Edit', edit_stadium_path(@country) %> |
+<% end %>
+
 <%= link_to 'Back', countries_path %>

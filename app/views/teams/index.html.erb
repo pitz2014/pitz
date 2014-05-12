@@ -1,27 +1,16 @@
-<h1>Listing teams</h1>
+<% provide(:title, 'Teams') %>
+<h1>Teams</h1>
 
-<table>
-  <tr>
-    <th>Appearances</th>
-    <th>Titles</th>
-    <th>Fifa ranking</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= will_paginate %>
 
-<% @teams.each do |team| %>
-  <tr>
-    <td><%= team.appearances %></td>
-    <td><%= team.titles %></td>
-    <td><%= team.fifa_ranking %></td>
-    <td><%= link_to 'Show', team %></td>
-    <td><%= link_to 'Edit', edit_team_path(team) %></td>
-    <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<ul class="users">
+  <%= render @teams %>
+</ul>
+
+<%= will_paginate %>
+
+<% if current_user.admin? %>
+
+	<%= link_to 'New Team', new_team_path %>
+	
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Team', new_team_path %>
