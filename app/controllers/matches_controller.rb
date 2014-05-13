@@ -14,6 +14,7 @@ class MatchesController < ApplicationController
   # GET /matches/1.json
   def show
     @match = Match.find(params[:id])
+    @teams = @match.teams
 
     respond_to do |format|
       format.html # show.html.erb
@@ -40,7 +41,13 @@ class MatchesController < ApplicationController
   # POST /matches
   # POST /matches.json
   def create
+    
     @match = Match.new(params[:match])
+    
+    @team1 = Team.where(:id => params[:team1])
+    @match.teams << @team1
+    @team2 = Team.where(:id => params[:team2])
+    @match.teams << @team2
 
     respond_to do |format|
       if @match.save
@@ -55,8 +62,12 @@ class MatchesController < ApplicationController
 
   # PUT /matches/1
   # PUT /matches/1.json
-  def update
+  def update 
     @match = Match.find(params[:id])
+    @team1 = Team.where(:id => params[:team1])
+    @match.teams << @team1
+    @team2 = Team.where(:id => params[:team2])
+    @match.teams << @team2
 
     respond_to do |format|
       if @match.update_attributes(params[:match])

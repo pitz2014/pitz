@@ -10,15 +10,25 @@
       </ul>
     </div>
   <% end %>
+  
+  <div class="field">
+  	 <%= select_tag "team1", 
+  	 options_from_collection_for_select(Team.all, :id , :name,@match.teams.map{ |j| j.id })%>
+  	 
+  	 <%= select_tag "team2", 
+  	 options_from_collection_for_select(Team.all, :id , :name,@match.teams.map{ |j| j.id })%>
+  </div>
 
   <div class="field">
     <%= f.label :date %><br />
     <%= f.datetime_select :date %>
   </div>
+  
   <div class="field">
-    <%= f.label :stadium_id %><br />
-    <%= f.number_field :stadium_id %>
+  	 Stadium
+  	 <%= f.collection_select(:stadium_id, Stadium.all, :id, :name, prompt: true) %>
   </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

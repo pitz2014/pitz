@@ -7,6 +7,9 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :appearances
       t.integer :career_goals
       t.string :avatar_url
+      t.text :description
+      t.string :position
+      t.string :club
 
       t.timestamps
     end

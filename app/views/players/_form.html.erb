@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-  	 <%= f.collection_select(:team_id, Team.all, :id, :titles, prompt: true) %>
+  	 <%= f.collection_select(:team_id, Team.all, :id, :name, {}, :style => "width:300px; height:50px") %>
   </div>
-  
+ 
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label :birth_date %><br />
-    <%= f.date_select :birth_date, start_year: 1950 %>
+    <%= f.date_select :birth_date, start_year: 1950%>
   </div>
   <div class="field">
     <%= f.label :appearances %><br />

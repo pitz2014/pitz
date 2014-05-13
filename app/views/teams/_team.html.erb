@@ -1,7 +1,7 @@
 <li>
   <ul class="span4">
-  	<li><%= image_tag(Country.find_by_id(team.country_id).flag_url, alt: Country.find_by_id(team.country_id).name, size: "50x100") %></li>
-  	<li><b>Country: </b><%= link_to Country.find_by_id(team.country_id).name, team%>
+  	<li><%= image_tag(team.flag_url, alt: team.flag_url, size: "50x100") %></li>
+  	<li><b>Country: </b><%= link_to team.name, team%>
     <li><b>Titles:</b> <%= team.titles %></li>
   </ul>
 </li>    

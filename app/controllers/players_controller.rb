@@ -9,7 +9,7 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @players =  Player.paginate(page: params[:page])
+    @players =  Player.paginate(page: params[:page], :per_page => 10)
 
     respond_to do |format|
       format.html # index.html.erb

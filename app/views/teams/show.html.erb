@@ -1,22 +1,26 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @team.name %></h1>
+
 <div class="row">
   <aside class="span8">
       <%= image_tag("team_spain.jpg" , alt: @team.titles, size: "630x420") %>
   </aside>
   <div class="span4">
     <ul class="users">
-	  <li><b>Name: </b> <%= @country.name %></li>
-	  <li><b>Flag: </b> <%= image_tag(@country.flag_url , 
-	  									alt: @country.name, size: "50x100") %></li>
-	  <li><b>FIFA logo: </b> <%= image_tag(@country.logo_url , 
-	  									alt: @country.name, size: "50x50") %></li>
+	  <li><%= image_tag(@team.flag_url , 
+	  									alt: @team.name, size: "50x100") %></li>
+	  <li><%= image_tag(@team.logo_url , 
+	  									alt: @team.name, size: "50x50") %></li>
 	  <li><b>Appearances: </b> <%= @team.appearances %></li>
 	  <li><b>Titles: </b> <%= @team.titles %></li>
 	  <li><b>Ranking: </b> <%= @team.fifa_ranking %></li>
 	</ul>	
   </div>
 </div>
+
+<br>
+<br>
 
 <div class="row">
 	<div class="span6">
@@ -33,8 +37,8 @@
 	</div>
 </div>
 
-
-
+<br>
+<br>
 
 <% if admin_user? %>
 	<%= link_to "Delete", @team, method: :delete,

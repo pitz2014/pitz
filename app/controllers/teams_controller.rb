@@ -9,14 +9,13 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams =  Team.paginate(page: params[:page])
+    @teams =  Team.paginate(page: params[:page], :per_page => 10)
   end
 
   # GET /teams/1
   # GET /teams/1.json
   def show
     @team = Team.find(params[:id])
-    @country = Country.find_by_id(@team.country_id)
     @players = @team.players.paginate(page: params[:page])
     @matches = @team.matches.paginate(page: params[:page])
     

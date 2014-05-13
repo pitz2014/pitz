@@ -11,20 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140512062136) do
+ActiveRecord::Schema.define(:version => 20140513103401) do
 
   create_table "brackets", :force => true do |t|
     t.string   "name"
     t.boolean  "running"
     t.boolean  "over"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "countries", :force => true do |t|
-    t.string   "name"
-    t.string   "flag_url"
-    t.string   "logo_url"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -48,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20140512062136) do
     t.integer  "points"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "team_id"
   end
 
   create_table "groups", :force => true do |t|
@@ -66,6 +59,11 @@ ActiveRecord::Schema.define(:version => 20140512062136) do
     t.boolean  "played"
   end
 
+  create_table "matches_teams", :force => true do |t|
+    t.integer "match_id"
+    t.integer "team_id"
+  end
+
   create_table "microposts", :force => true do |t|
     t.string   "content"
     t.integer  "user_id"
@@ -82,6 +80,9 @@ ActiveRecord::Schema.define(:version => 20140512062136) do
     t.integer  "appearances"
     t.integer  "career_goals"
     t.string   "avatar_url"
+    t.text     "description"
+    t.string   "position"
+    t.string   "club"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
@@ -113,9 +114,11 @@ ActiveRecord::Schema.define(:version => 20140512062136) do
     t.integer  "appearances"
     t.integer  "titles"
     t.integer  "fifa_ranking"
+    t.string   "name"
+    t.string   "flag_url"
+    t.string   "logo_url"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.integer  "country_id"
     t.integer  "group_stats_id"
     t.string   "team_url"
     t.integer  "match_id"
