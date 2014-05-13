@@ -1,8 +1,15 @@
 class BracketsController < ApplicationController
+  
+  before_filter :signed_in_user,
+                only: [:new, :create, :edit, :update, :destroy]
+               
+  before_filter :admin_user?,
+                only: [:new, :create, :edit, :update, :destroy]
+  
   # GET /brackets
   # GET /brackets.json
   def index
-    @brackets = Bracket.all
+    @brackets =  Bracket.paginate(page: params[:page], :per_page => 10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +21,7 @@ class BracketsController < ApplicationController
   # GET /brackets/1.json
   def show
     @bracket = Bracket.find(params[:id])
+    @groups = @bracket.groups.paginate(page: params[:page])
 
     respond_to do |format|
       format.html # show.html.erb

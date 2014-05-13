@@ -1,20 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @bracket.name %>
-</p>
 
-<p>
-  <b>Running:</b>
-  <%= @bracket.running %>
-</p>
+<h1>
+	<%= @bracket.name %>
+</h1>
 
-<p>
-  <b>Over:</b>
-  <%= @bracket.over %>
-</p>
+<div class="span6">
+  <% if @bracket.groups.any? %>
+     <ol class="user">
+	     <%= render @groups %>
+	 </ol>
+	 <%= will_paginate @groups %>
+  <% end %>
+</div>
 
+<% if admin_user? %>
+	<%= link_to "Delete", @bracket, method: :delete,
+                                data: { confirm: "You sure?" } %> |
+	<%= link_to 'Edit', edit_bracket_path(@bracket) %> |
+<% end %>
 
-<%= link_to 'Edit', edit_bracket_path(@bracket) %> |
 <%= link_to 'Back', brackets_path %>
