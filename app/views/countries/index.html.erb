@@ -7,7 +7,7 @@
 
 <%= will_paginate %>
 
-<% if current_user.admin? %>
+<% if admin_user? %>
 
 	<%= link_to 'New Country', new_country_path %>
 	

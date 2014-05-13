@@ -5,7 +5,11 @@ module SessionsHelper
   end
   
   def admin_user?
-    current_user.admin?
+    if signed_in?
+      current_user.admin?
+    else
+      false
+    end
   end
 
   def sign_in(user)

@@ -36,7 +36,7 @@
 
 
 
-<% if current_user.admin? %>
+<% if admin_user? %>
 	<%= link_to "Delete", @team, method: :delete,
                                 data: { confirm: "You sure?" } %> |
 	<%= link_to 'Edit', edit_team_path(@team) %> |

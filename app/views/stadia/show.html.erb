@@ -16,7 +16,7 @@
 </ul>
 
 
-<% if current_user.admin? %>
+<% if admin_user? %>
 	<%= link_to "Delete", @stadium, method: :delete,
                                 data: { confirm: "You sure?" } %> |
 	<%= link_to 'Edit', edit_stadium_path(@stadium) %> |
