@@ -15,9 +15,8 @@
     <%= f.label :date_time %><br />
     <%= f.datetime_select :date_time %>
   </div>
-  <div class="field">
-    <%= f.label :player_id %><br />
-    <%= f.number_field :player_id %>
+   <div class="field">
+  	 <%= f.collection_select(:player_id, Player.all, :id, :name, {}, :style => "width:300px; height:50px") %>
   </div>
   <div class="field">
     <%= f.label :match_id %><br />
